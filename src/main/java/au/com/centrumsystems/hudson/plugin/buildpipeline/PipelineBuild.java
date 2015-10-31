@@ -527,4 +527,17 @@ public class PipelineBuild {
     public String getProjectHealth() {
         return project.getBuildHealth().getIconUrl().replaceAll("\\.gif", "\\.png");
     }
+    
+    /** 
+     * @return a custom label from the environment to display in the build card.
+     */
+    public String getBuildBoxLabel() {
+        final Map<String, String> envVars = BuildUtil.getEnvVars(currentBuild);
+        
+        if (envVars.containsKey("BUILD_BOX_LABEL")) {
+            return envVars.get("BUILD_BOX_LABEL");
+        }
+        
+        return null;
+    }
 }

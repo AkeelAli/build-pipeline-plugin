@@ -182,4 +182,15 @@ public final class BuildUtil {
         return retval;
     }
 
+    public static Map<String, String> getEnvVars(final AbstractBuild<?, ?> build) {
+        final Map<String, String> retval = new HashMap<String, String>();
+        if (build != null) {
+            try {
+            	retval.putAll(build.getEnvironment());
+            } catch (Exception e){
+            }
+        }
+
+        return retval;
+    }
 }
